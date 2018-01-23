@@ -17,7 +17,7 @@ public class TabVtsPlato implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="TAB_VTS_PLATOS_IDPLATO_GENERATOR", sequenceName="TAB_VTS_PLATOS_SEQ")
+	@SequenceGenerator(name="TAB_VTS_PLATOS_IDPLATO_GENERATOR", sequenceName="TAB_VTS_PLATOS_SEQ",allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="TAB_VTS_PLATOS_IDPLATO_GENERATOR")
 	@Column(unique=true, nullable=false)
 	private Integer idplato;
@@ -25,8 +25,7 @@ public class TabVtsPlato implements Serializable {
 	@Column(length=300)
 	private String descripccionplato;
 
-	@Column(length=254)
-	private String fotoplato;
+	private byte[] fotoplato;
 
 	@Column(length=50)
 	private String nombreplato;
@@ -61,11 +60,11 @@ public class TabVtsPlato implements Serializable {
 		this.descripccionplato = descripccionplato;
 	}
 
-	public String getFotoplato() {
+	public byte[] getFotoplato() {
 		return this.fotoplato;
 	}
 
-	public void setFotoplato(String fotoplato) {
+	public void setFotoplato(byte[] fotoplato) {
 		this.fotoplato = fotoplato;
 	}
 
