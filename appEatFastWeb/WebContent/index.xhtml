@@ -5,17 +5,51 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
+<h:head>
+	<!--<link rel="stylesheet" type="text/css" href="Resource/css/style.css"
+		media="screen" />-->
+</h:head>
 <body>
 	<p:messages autoUpdate="true"></p:messages>
-	<h:panelGrid columns="2">
+	<!--<h:outputText value="REY POLLO" style="padding-left: 80px;" />
+	<p:separator />-->
+	<h:panelGrid columns="1" style="margin: 0 auto;">
+		<h:panelGrid style="margin: 0 auto;">
+			<p:graphicImage value="Resource/img/pollo2.png" />
+			<br />
+			<br />
+			<br />
+		</h:panelGrid>
 		<h:form id="form1">
-			<p:panel header="Control de Clientes">
-				<p:panelGrid columns="2">
-					<h:outputText value="Cédula:" />
-					<p:inputText value="" required="true"
-						requiredMessage="Especifique la placa" />
-				</p:panelGrid>
+			<p:panel header="Login">
+				<h:outputText
+					value="Si no es  usuario del sistema,
+						solicite su registro a un administrador" />
+				<br />
+				<br />
+				<h:outputText value="Usuario o Email:" style="font-weight: bold" />
+				<br />
+				<p:inputText value="" required="true"
+					requiredMessage="Especifique su usuario o email"
+					style="width: 100%" />
+				<br />
+				<br />
+				<h:outputText value="Contraseña:" style="font-weight: bold" />
+				<br />
+				<p:inputText value="" required="true" type="password"
+					requiredMessage="Especifique su contraseña" style="width: 100%" />
+				<br />
+				<div align="right">
+				<h:link value="¿Olvido su contraseña?"
+					style="color: #4253f4;
+						text-decoration: underline blue;" />
+				</div>
+				<br />
+				<br />
+				<div align="center">
+					<p:commandButton value="Ingresar" type="button"
+						icon="ui-icon-circle-check" />
+				</div>
 			</p:panel>
 		</h:form>
 	</h:panelGrid>
