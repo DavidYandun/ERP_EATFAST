@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Categoría Producto</title>
+</h:head>
+<body>
+	<p:messages autoUpdate="true"></p:messages>
+	<h:panelGrid columns="2">
+		<h:form id="form1" enctype="multipart/form-data">
+			<p:panel header="Nuevo Categoría">
+				<p:panelGrid columns="2">
+					<h:outputText value="Nombre Categoría:" />
+					<p:inputText value="#{controllerCategoriaProducto.nombrecategoria}" required="true"
+						requiredMessage="Especifique el nombre" />
+					<h:outputText value="Descripción: " />
+					<p:inputText value="#{controllerCategoriaProducto.}"
+						required="true" requiredMessage="Especifique la descripción" />					
+				</p:panelGrid>
+				<p:commandButton value="Agregar" ajax="true" icon="ui-icon-disk"
+					update="@form,:form2:tabla1"
+					actionListener="#{controllerCategoriaProducto.agregarCategoriaProducto()}">
+				</p:commandButton>
+			</p:panel>
+		</h:form>
+
+		<h:form id="form2">
+			<p:panel header="LISTA DE REGISTROS">
+				<p:dataTable value="#{controllerCategoriaProducto.lista}" var="p" id="tabla1">
+					<p:column headerText="Nombre">
+						<h:outputText value="#{p.nombrecategoria}" />
+					</p:column>
+					<p:column headerText="Descripción">
+						<h:outputText value="#{p.descripcioncategoria}" />
+					</p:column>					
+					<p:column headerText="EDITAR">
+						<p:commandButton icon="ui-icon-pencil" update="form4"
+							onclick="PF('dialogo1').show();"
+							actionListener="#{controllerCategoriaProducto.cargarCategoriaProducto(p)}"></p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</h:panelGrid>
+
+	<p:dialog header="Edición de Categoría de producto" widgetVar="dialogo1" id="dialogo1"
+		modal="true" height="275" hideEffect="fade">
+		<h:form id="form4">
+
+			<p:panelGrid columns="2">
+				<h:outputText value="Nombre Categoria:" />
+				<p:inputText value="#{controllerCategoriaProducto.nombrecategoria}" required="true"
+					requiredMessage="Especifique el nombre" />
+				<h:outputText value="Descripción: " />
+				<p:inputText value="#{controllerCategoriaProducto.descripcioncategoria}"
+					required="true" requiredMessage="Especifique la descripción" />				
+			</p:panelGrid>
+			<p:commandButton value="Actualizar" update="@form,:form2:tabla1"
+				actionListener="#{controllerCategoriaProducto.editarCategoriaProducto()}"
+				onclick="PF('modal').hide();$('#form4').trigger('reset');"></p:commandButton>
+		</h:form>
+	</p:dialog>
+</body>
+</html>
+      
